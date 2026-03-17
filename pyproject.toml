@@ -1,0 +1,60 @@
+[project]
+name = "relax"
+version = "0.1.0"
+description = "Q-Value Policy Optimization"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "dill==0.3.8",
+    "dm-haiku",
+    "gymnasium[mujoco]>=1.2.1",
+    "imageio>=2.37.0",
+    "ipdb",
+    "jax-cuda12-pjrt==0.8.2",
+    "jax-cuda12-plugin==0.8.2",
+    "jax[cuda12]==0.8.2",
+    "jaxlib==0.8.2",
+    "matplotlib>=3.10.7",
+    "numba",
+    "numpy>=2.3.4",
+    "numpyro",
+    "optax",
+    "pandas>=2.3.3",
+    "scikit-learn",
+    "scipy>=1.16.2",
+    "seaborn>=0.13.2",
+    "setproctitle",
+    "tensorboardX",
+    "tqdm>=4.67",
+    "wandb>=0.22.2",
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 88  # Same as black
+target-version = "py312"
+lint.extend-select = [
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+lint.extend-ignore = ["F722", "F821", "E731"]
+fix = true
+
+# Ignore files in .gitignore
+respect-gitignore = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+known-first-party = ["agent"]
+force-single-line = false
+lines-after-imports = 2

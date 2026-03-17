@@ -1,0 +1,21 @@
+[environment]
+env = "Humanoid-v5"
+num_vec_envs = 1
+
+[training]
+alg = "dacer"
+total_step = 1e6  # 1e6
+start_step = 10000    # 3e4
+lr = 3e-4
+
+[network]
+hidden_num = 3
+hidden_dim = 256
+diffusion_steps = 20
+diffusion_hidden_dim = 256
+
+[logging]
+use_wandb = true
+wandb_project = "baseline"
+wandb_entity = "MyDiffusionRL"
+wandb_mode = "online"  # Options: online, offline, disabled

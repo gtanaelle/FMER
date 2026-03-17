@@ -1,0 +1,17 @@
+[environment]
+env = "HalfCheetah-v5"
+num_vec_envs = 1
+
+[training]
+alg = "fpo"
+total_step = 1000000  # 1e6
+start_step = 10000    # 3e4
+
+[network]
+diffusion_steps = 10
+
+[logging]
+use_wandb = true
+wandb_project = "test"
+wandb_entity = "MyDiffusionRL"
+wandb_mode = "online"  # Options: online, offline, disabled

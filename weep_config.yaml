@@ -1,0 +1,14 @@
+program: scripts/train_mujoco.py
+project: enhance-test
+method: grid  # grid, random, bayes
+metric:
+  name: evaluate/best_reward
+  goal: maximize
+parameters:
+  env:
+    # values: ["hopper", "humanoid",  "ant",  "reacher", "swimmer", "pusher","inverted_pendulum_double","adroithanddoor", "adroithandhammer", "adroithandpen", "adroithandrelocate", "frankakitchen","walker2d","halfcheetah","inverted_pendulum",]
+    values: ["hopper", "humanoid", "walker2d","halfcheetah", "frankakitchen", "frankakitchen_1", "frankakitchen_2", "frankakitchen_4",]
+  seed:
+    values: [0, 1, 2, 3, 4]
+  alg:
+    value: "fmer"
