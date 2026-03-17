@@ -12,6 +12,8 @@ The FrankaKitchen environment is a multi-task manipulation benchmark that tests 
 - Turning on/off the stove
 - Sliding the cabinet door
 
+This environment presents significant challenges due to its **sparse reward structure**, where feedback is only provided upon successful task completion. Furthermore, the environment exhibits a **multimodal optimal action distribution**, meaning there are multiple diverse ways to achieve the same task objective. These characteristics make FrankaKitchen ideal for evaluating the robustness and generalization capabilities of reinforcement learning algorithms.
+
 In this benchmark, we evaluate our approach across **four different task count settings (N)**: N=1 (single task), N=2 (two tasks), N=4 (four tasks), and N=7 (all tasks). These settings allow us to assess how well methods scale as the task complexity increases. Results represent the maximum performance over 1M environment steps, averaged across 5 random seeds.
 
 The table below shows the mean number of accomplished tasks (with standard deviation in parentheses) across baselines and our proposed FMER method:
