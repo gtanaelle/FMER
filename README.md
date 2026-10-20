@@ -35,24 +35,24 @@ On the sparse-reward **FrankaKitchen** benchmark FMER beats all eight baselines,
 
 FMER represents the policy as a velocity field $v_\theta(x_t, t, s)$ in an unbounded latent space and squashes the result into bounded actions with $a = \tanh(x_1)$. Training minimizes one loss:
 
-$$
+```math
 \mathcal{L}_{\text{FMER}}(\theta) = {\color{#1f77b4}\mathcal{L}_{\text{W-CFM}}(\theta)} + \alpha\,{\color{#2ca02c}\mathcal{L}_{\text{ent}}(\theta)}
-$$
+```
 
 **1. Mirror descent through weighted flow matching (Thm. 1).** Sample $M$ candidate actions from the current policy, score them with the critic, and weight the conditional flow matching loss by the softmax of their advantages:
 
-$$
-{\color{#1f77b4}\mathcal{L}_{\text{W-CFM}} = \mathbb{E}\left[ w(s,a)\,\big\| v_\theta(x_t,t,s) - (\operatorname{arctanh}(a) - x_0) \big\|^2 \right]},
+```math
+{\color{#1f77b4}\mathcal{L}_{\text{W-CFM}} = \mathbb{E}\left[ w(s,a)\,\big\| v_\theta(x_t,t,s) - (\text{arctanh}(a) - x_0) \big\|^2 \right]},
 \qquad w(s,a^{(j)}) = \frac{\exp(A(s,a^{(j)})/\tau)}{\sum_l \exp(A(s,a^{(l)})/\tau)}
-$$
+```
 
 We prove that the global minimizer is exactly the policy mirror descent target $\pi^\ast \propto \pi_k \exp(A/\tau)$. Training is simulation-free, so gradients never pass through the ODE solver.
 
 **2. Closed-form entropy with a tanh correction (Thm. 2, Prop. 1).** The entropy of an ODE policy follows from the divergence of its vector field. We correct for the density distortion that the tanh squashing introduces:
 
-$$
+```math
 {\color{#2ca02c}\mathcal{L}_{\text{ent}} = -\,\mathbb{E}_{t,x_t}\Big[ \nabla_x \cdot v_\theta(x_t,t,s) \;-\; 2\,\langle \tanh(x_t),\, v_\theta(x_t,t,s) \rangle \Big]}
-$$
+```
 
 The divergence is estimated with Hutchinson's trace estimator, which costs $\mathcal{O}(d)$. The multiplier $\alpha$ is tuned by dual gradient descent toward a target entropy $\bar H$.
 
