@@ -138,7 +138,7 @@ scripts/        training entry point, result collection and plotting
 ```bibtex
 @inproceedings{fmer2026,
   title     = {Flow Matching Policy Optimization with Mirror Descent and Entropy Constraints},
-  author    = {Gao, Ting and others},
+  author    = {Gao, Ting, et al.},
   booktitle = {Advances in Neural Information Processing Systems},
   year      = {2026}
 }
