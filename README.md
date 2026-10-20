@@ -4,6 +4,9 @@
 
 ### Flow Matching Policy Optimization with Mirror Descent and Entropy Constraints
 
+**Ting Gao, Stavros Orfanoudakis, Nan Lin, Winnie Daamen, Serge Hoogendoorn, Elvin Isufi**<br>
+Delft University of Technology
+
 [![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-4b44ce.svg)](https://neurips.cc/Conferences/2026)
 [![Python 3.13](https://img.shields.io/badge/python-3.13-3776ab.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![JAX](https://img.shields.io/badge/built%20with-JAX-a259ff.svg)](https://github.com/jax-ml/jax)
@@ -29,7 +32,7 @@ FMER is an online RL algorithm with a **flow matching (ODE) policy** that gets t
 | FLAME | ✗ | ✓ | ✗ | ✗ |
 | **FMER (ours)** | ✓ | ✓ | ✓ | ✓ |
 
-On the sparse-reward **FrankaKitchen** benchmark FMER beats all eight baselines, and the gap widens as the number of tasks grows. It stays competitive on dense-reward **MuJoCo**.
+On the sparse-reward **FrankaKitchen** benchmark FMER outperforms eight baselines in nearly every setting, and the gap widens as the number of tasks grows. It stays competitive on dense-reward **MuJoCo**.
 
 ## 👩🏻‍🔬 Method
 
@@ -138,7 +141,7 @@ scripts/        training entry point, result collection and plotting
 ```bibtex
 @inproceedings{fmer2026,
   title     = {Flow Matching Policy Optimization with Mirror Descent and Entropy Constraints},
-  author    = {Gao, Ting, et al.},
+  author    = {Gao, Ting and Orfanoudakis, Stavros and Lin, Nan and Daamen, Winnie and Hoogendoorn, Serge and Isufi, Elvin},
   booktitle = {Advances in Neural Information Processing Systems},
   year      = {2026}
 }
