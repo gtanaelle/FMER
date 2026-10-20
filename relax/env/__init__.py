@@ -112,6 +112,8 @@ def create_vector_env(name: str, num_envs: int, seed: int, action_seed: int = 0,
     if FutexProcessVectorEnv is not None:
         implementations["futex"] = FutexProcessVectorEnv
     
+    if mode == "futex" and "futex" not in implementations:
+        mode = "serial"  # futex C extension not built; fall back to pure-Python envs
     if mode not in implementations:
         available = ", ".join(implementations.keys())
         raise ValueError(f"Mode '{mode}' not available. Available modes: {available}. "

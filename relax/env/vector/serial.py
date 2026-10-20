@@ -1,18 +1,25 @@
 from typing import Optional
 import gymnasium
-from gymnasium.spaces import Box
+from gymnasium.spaces import Box, Dict
+from gymnasium.wrappers import FilterObservation, FlattenObservation
 import numpy as np
 
 from relax.env.vector.base import VectorEnv
 
 
 class SerialVectorEnv(VectorEnv):
-    def __init__(self, name: str, num_envs: int, seed: int):
+    def __init__(self, name: str, num_envs: int, seed: int, *, env_kwargs: dict = None):
         assert num_envs > 0
 
         self.num_envs = num_envs
-        self.envs = [gymnasium.make(name) for _ in range(num_envs)]
+        self.envs = [gymnasium.make(name, **(env_kwargs or {})) for _ in range(num_envs)]
+        # Same as worker3: keep only the 'observation' key of Dict spaces, flattened
+        self.envs = [
+            FlattenObservation(FilterObservation(env, ["observation"])) if isinstance(env.observation_space, Dict) else env
+            for env in self.envs
+        ]
 
+        self.spec = self.envs[0].spec
         self.single_observation_space = self.envs[0].observation_space
         self.single_action_space = self.envs[0].action_space
 
