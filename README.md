@@ -8,6 +8,7 @@
 Delft University of Technology
 
 [![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-4b44ce.svg)](https://neurips.cc/Conferences/2026)
+[![Blog](https://img.shields.io/badge/blog-post-ff6f61.svg)](https://gtanaelle.github.io/blog/2026/10/20/flow-matching-policy-optimization/)
 [![Python 3.13](https://img.shields.io/badge/python-3.13-3776ab.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![JAX](https://img.shields.io/badge/built%20with-JAX-a259ff.svg)](https://github.com/jax-ml/jax)
 
